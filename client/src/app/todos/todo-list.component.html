@@ -23,29 +23,27 @@
         </mat-form-field>
         <mat-form-field>
           <input
-          matInput
-          id="todoCategory"
-          type="text"
-          placeholder="Filter by category"
-          (input)="updateCategory($event.target.value)">
+            matInput
+            id="todoCategory"
+            type="text"
+            placeholder="Filter by category"
+            (input)="updateCategory($event.target.value)">
         </mat-form-field>
         <!--<mat-form-field>-->
         <!--<input matInput id="userCompany" #input type="text" placeholder="Search for company" (input)="contentChange($event.target.value)">-->
         <!--</mat-form-field>-->
-        <!--
-                <mat-accordion *ngIf="todos; else todosError">
-                  <mat-expansion-panel #elem [id]="user.email" *ngFor="let user of this.filteredUsers">
-                    <mat-expansion-panel-header>
+        <mat-accordion *ngIf="todos; else todosError">
+          <mat-expansion-panel #elem [id]="todo.owner" *ngFor="let todo of this.filteredTodos">
+            <mat-expansion-panel-header>
+              <mat-panel-title matTooltip="Click here for more info">{{todo.body}}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description>Owned by {{todo.owner}}</mat-panel-description>
+            <mat-panel-description>The status is: {{todo.status}}</mat-panel-description>
+            <mat-panel-description>The content is: "{{todo.body}}"</mat-panel-description>
+            <mat-panel-description>It is in {{todo.category}}</mat-panel-description>
 
-                      <mat-panel-title matTooltip="email: {{user.email}}">{{user.name}}</mat-panel-title>
-
-                    </mat-expansion-panel-header>
-                    <mat-panel-description>Works for {{user.company}}</mat-panel-description>
-                    <mat-panel-description>Age: {{user.age}} years old</mat-panel-description>
-
-                  </mat-expansion-panel>
-                </mat-accordion>
-                  -->
+          </mat-expansion-panel>
+        </mat-accordion>
         <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
         <ng-template #todosError>
           <mat-error>

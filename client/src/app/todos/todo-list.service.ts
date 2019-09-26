@@ -48,7 +48,7 @@ export class TodoListService {
       searchCategory = searchCategory.toLowerCase();
 
       filteredTodos = filteredTodos.filter(todo => {
-        return !searchCategory || todo.body.toLowerCase().indexOf(searchCategory) !== -1;
+        return !searchCategory || todo.category.toLowerCase().indexOf(searchCategory) !== -1;
       });
     }
 
