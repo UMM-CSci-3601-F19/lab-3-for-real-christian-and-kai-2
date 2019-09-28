@@ -12,7 +12,6 @@
             placeholder="Filter by owner"
             (input)="updateOwner($event.target.value)">
         </mat-form-field>
-
         <mat-form-field>
           <input
             matInput
@@ -29,6 +28,14 @@
             placeholder="Filter by category"
             (input)="updateCategory($event.target.value)">
         </mat-form-field>
+        <mat-form-field>
+          <mat-label>Filter by status</mat-label>
+          <mat-select id="todoStatus" (selectionChange)="updateStatus($event.value)">
+            <mat-option id="complete" value="complete">Complete</mat-option>
+            <mat-option id="incomplete" value="incomplete">Incomplete</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <!--<mat-form-field>-->
         <!--<input matInput id="userCompany" #input type="text" placeholder="Search for company" (input)="contentChange($event.target.value)">-->
         <!--</mat-form-field>-->

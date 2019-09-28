@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
   public todoOwner: string;
   public todoBody: string;
   public todoCategory: string;
+  public todoStatus: string;
 
 
   // Inject the UserListService into this component.
@@ -45,11 +46,17 @@ export class TodoListComponent implements OnInit {
     this.updateFilter();
   }
 
+  public updateStatus(newStatus: string): void {
+    this.todoStatus = newStatus;
+    this.updateFilter();
+  }
+
   public updateFilter() {
     this.filteredTodos =
       this.todoListService.filterTodos(
         this.todos,
         this.todoOwner,
+        this.todoStatus,
         this.todoBody,
         this.todoCategory);
   }

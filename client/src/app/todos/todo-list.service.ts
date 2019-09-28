@@ -21,16 +21,30 @@ export class TodoListService {
     return this.httpClient.get<Todo>(this.todoUrl + '/' + id);
   }
 
-  filterTodos(todos: Todo[], searchOwner?: string, searchBody?: string, searchCategory?: string): Todo[] {
+  filterTodos(todos: Todo[], searchOwner?: string, searchStatus?: string, searchBody?: string, searchCategory?: string): Todo[] {
 
     let filteredTodos = todos;
 
-    // Filter by owner
+    // Filter by owneris
     if (searchOwner != null) {
       searchOwner = searchOwner.toLowerCase();
 
       filteredTodos = filteredTodos.filter(todo => {
         return !searchOwner || todo.owner.toLowerCase().indexOf(searchOwner) !== -1;
+      });
+    }
+
+    // Filter by status
+    if (searchStatus != null) {
+      searchStatus = searchStatus.toLowerCase();
+
+      var isCompleteOrNot = true;
+       if (searchStatus === "incomplete") {
+         isCompleteOrNot = false;
+       }
+
+      filteredTodos = filteredTodos.filter(todo => {
+        return !searchStatus || (todo.status === isCompleteOrNot);
       });
     }
 
@@ -51,13 +65,6 @@ export class TodoListService {
         return !searchCategory || todo.category.toLowerCase().indexOf(searchCategory) !== -1;
       });
     }
-
-    /* Filter by status
-    if (searchOwner != null) {
-      filteredUsers = filteredUsers.filter((user: User) => {
-        return !searchAge || (user.age === Number(searchAge));
-      });
-    }*/
 
     return filteredTodos;
   }

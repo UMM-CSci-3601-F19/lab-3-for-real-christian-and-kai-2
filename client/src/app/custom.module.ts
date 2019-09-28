@@ -11,7 +11,9 @@ import {
   MatInputModule,
   MatMenuModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatRadioModule,
+  MatSelectModule
 } from '@angular/material';
 
 import {FlexLayoutModule,} from '@angular/flex-layout';
@@ -38,7 +40,9 @@ const MATERIAL_MODULES: any[] = [
   MatSidenavModule,
   MatInputModule,
   MatExpansionModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatRadioModule,
+  MatSelectModule
 ];
 
 @NgModule({
