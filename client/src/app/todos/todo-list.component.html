@@ -44,10 +44,11 @@
             <mat-expansion-panel-header>
               <mat-panel-title matTooltip="Click here for more info">{{todo.body}}</mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description>Owned by {{todo.owner}}</mat-panel-description>
-            <mat-panel-description>The status is: {{todo.status}}</mat-panel-description>
-            <mat-panel-description>The content is: "{{todo.body}}"</mat-panel-description>
-            <mat-panel-description>It is in {{todo.category}}</mat-panel-description>
+            <mat-panel-description>Owned by {{todo.owner}};</mat-panel-description>
+            <mat-panel-description *ngIf="todo.status">the status is complete;</mat-panel-description>
+            <mat-panel-description *ngIf="!todo.status">the status is incomplete;</mat-panel-description>
+            <mat-panel-description>the content is: "{{todo.body}}";</mat-panel-description>
+            <mat-panel-description>it is in {{todo.category}}.</mat-panel-description>
 
           </mat-expansion-panel>
         </mat-accordion>
