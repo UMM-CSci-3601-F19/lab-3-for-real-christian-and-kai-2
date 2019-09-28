@@ -14,11 +14,18 @@ export class TodoListComponent implements OnInit {
   // These are public so that tests can reference them (.spec.ts)
   public todos: Todo[];
   public filteredTodos: Todo[];
+  public filteredTodo: Todo;
 
   public todoOwner: string;
   public todoBody: string;
   public todoCategory: string;
   public todoStatus: string;
+  public todoId: string;
+  public todoIdReset: string;
+  public todoOwnerReset: string;
+  public todoStatusReset: string;
+  public todoBodyReset: string;
+  public todoCategoryReset: string;
 
 
   // Inject the UserListService into this component.
@@ -29,6 +36,28 @@ export class TodoListComponent implements OnInit {
 
   constructor(private todoListService: TodoListService) {
 
+  }
+
+  public clearFilteredTodo(){
+    this.filteredTodo = null;
+    this.todoIdReset = "";
+    this.todoId = "";
+  }
+
+  public clearFilteredTodos(){
+    this.filteredTodos = null;
+    this.todoOwnerReset = "";
+    this.todoStatusReset = "";
+    this.todoBodyReset = "";
+    this.todoCategoryReset = "";
+    this.todoOwner = "";
+    this.todoStatus = "";
+    this.todoBody = "";
+    this.todoCategory = "";
+  }
+
+  public showAllTodos(){
+    this.filteredTodos = this.todos;
   }
 
   public updateOwner(newOwner: string): void {
@@ -61,8 +90,20 @@ export class TodoListComponent implements OnInit {
         this.todoCategory);
   }
 
+  public searchById(id: string) {
+    this.todoId = id;
+    const todo: Observable<Todo> = this.todoListService.getTodoById(this.todoId);
+    todo.subscribe(
+      returnedTodos => {
+        this.filteredTodo = returnedTodos;
+      },
+      err => {
+        console.log(err);
+      });
+  }
+
   /**
-   * Starts an asynchronous operation to update the users list
+   * Starts an asynchronous operation to update the todos list
    *
    */
   ngOnInit(): void {
