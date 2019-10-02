@@ -15,10 +15,10 @@
             placeholder="Filter by Id"
             (input)="searchById($event.target.value); ">
         </mat-form-field>
-        <button (click)="clearFilteredTodo()">Clear the todo</button>
+        <button id="clearTodo" (click)="clearFilteredTodo()">Clear the todo</button>
 
         <mat-accordion *ngIf="filteredTodo">
-          <mat-expansion-panel #elem [id]="filteredTodo.owner">
+          <mat-expansion-panel #elem [id]="filteredTodo.body">
             <mat-expansion-panel-header>
               <mat-panel-title matTooltip="Click here for more info">{{filteredTodo.body}}</mat-panel-title>
             </mat-expansion-panel-header>
@@ -66,10 +66,10 @@
             (input)="updateCategory($event.target.value)">
         </mat-form-field>
         <button (click)="showAllTodos()">Show all todos</button>
-        <button (click)="clearFilteredTodos()">Clear all todos</button>
+        <button id="clearTodos" (click)="clearFilteredTodos()">Clear all todos</button>
 
         <mat-accordion *ngIf="todos; else todosError">
-          <mat-expansion-panel #elem [id]="todo.owner" *ngFor="let todo of this.filteredTodos">
+          <mat-expansion-panel #elem [id]="todo.body" *ngFor="let todo of this.filteredTodos">
             <mat-expansion-panel-header>
               <mat-panel-title matTooltip="Click here for more info">{{todo.body}}</mat-panel-title>
             </mat-expansion-panel-header>
