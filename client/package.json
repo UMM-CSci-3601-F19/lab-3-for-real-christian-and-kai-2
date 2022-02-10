@@ -28,7 +28,7 @@
     "@types/core-js": "^2.5.0",
     "core-js": "^2.5.0",
     "hammerjs": "^2.0.8",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "package.json": "^2.0.1",
     "rxjs": "^6.5.3",
     "tslib": "^1.10.0",
